@@ -1,0 +1,18 @@
+node_modules/
+dist/
+test-results/
+playwright-report/
+.env
+.env.*
+!.env.example
+*.log
+*.tsbuildinfo
+tmp/
+qa/
+/*.png
+
+# Original creative inputs and editor-specific workspace settings
+/media-src/
+/products demo/
+/refference image for reel/
+/.zcodeignore

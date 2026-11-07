@@ -1,0 +1,108 @@
+/* ============================================================================
+   Experience Studio layer — block frame, new blocks, preview ribbon, token hooks.
+   Everything here reads the built-in custom properties, so published design
+   tokens (applied on :root at runtime) restyle it automatically.
+   ========================================================================== */
+
+/* -- block frame ---------------------------------------------------------------- */
+.jw-block { display: contents; }
+.jw-block--styled { display: block; position: relative; }
+.jw-custom-page { padding-top: clamp(84px, 9vw, 128px); min-height: 60vh; }
+.jw-not-found { min-height: 70vh; display: grid; place-items: center; text-align: center; padding: 140px var(--gutter); }
+.jw-not-found h1 { font-family: var(--font-display); font-size: var(--fs-h1); letter-spacing: var(--track-display); margin: 0 0 12px; font-weight: 600; }
+.jw-not-found p { color: var(--ivory-dim); }
+.jw-not-found .btn { margin-top: 22px; }
+.brand-mark-img { display: inline-block; height: 1.25em; width: auto; vertical-align: -.25em; }
+.brand-wordmark-img { display: inline-block; height: 1.1em; width: auto; vertical-align: -.2em; margin-left: .5em; }
+
+/* -- button / card hooks fed by design tokens (defaults = today's look) ----------- */
+.btn { border-radius: var(--btn-radius, var(--r-pill)); min-height: var(--btn-min-h, 46px); }
+.btn--solid { background: var(--btn-solid-bg, var(--gold-soft)); color: var(--btn-solid-fg, #170B04); }
+.btn--solid:hover { background: var(--accent-hover, var(--gold-bright)); }
+.btn--ghost { color: var(--btn-ghost-fg, var(--ivory)); }
+.footer-col a { color: inherit; text-decoration: none; }
+.footer-col a:hover { color: var(--gold-bright); }
+.product-meta a.name-link { color: inherit; text-decoration: none; }
+.product-meta a.name-link:hover { color: #6E301D; }
+.grain { opacity: calc(var(--grain-opacity, .1) * 5); }
+.commerce-nav, .home-nav { backdrop-filter: var(--header-blur, none); }
+
+/* -- ritual-after / media split, mirrored ------------------------------------------ */
+.ritual-after--right .ritual-after-media { order: 2; }
+.ritual-after-copy .btn { margin-top: 26px; }
+@media (max-width: 900px) { .ritual-after--right .ritual-after-media { order: 0; } }
+
+/* -- announcement bar tones -------------------------------------------------------- */
+.store-banner--promo { background: var(--gold); color: #170B04; }
+.store-banner--warning { background: #7a2a14; }
+.store-banner__link { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+.store-banner__close { position: absolute; right: 12px; top: 50%; translate: 0 -50%; background: none; border: 0; color: inherit; font-size: 1.2rem; line-height: 1; padding: 6px 10px; }
+
+/* -- spacer / image / rich text -------------------------------------------------------- */
+.jw-spacer { width: 100%; }
+.jw-image { margin: 0; padding: clamp(32px, 5vw, 72px) var(--gutter); }
+.jw-image img { width: 100%; height: auto; border-radius: var(--r-frame); border: 1px solid var(--line); }
+.jw-image__link { display: block; }
+.jw-image figcaption { margin-top: 12px; color: var(--ivory-dim); font-size: var(--fs-small); text-align: center; }
+.jw-rich { max-width: 72ch; margin: 0 auto; padding: clamp(40px, 6vw, 96px) var(--gutter); }
+.jw-md { color: var(--ivory-dim); line-height: 1.8; }
+.jw-md h2, .jw-md h3, .jw-md h4 { font-family: var(--font-display); color: var(--ivory); font-weight: 600; line-height: 1.1; letter-spacing: -.02em; margin: 1.6em 0 .5em; }
+.jw-md h2 { font-size: var(--fs-h2); }
+.jw-md h3 { font-size: var(--fs-h3); }
+.jw-md h4 { font-size: 1.1rem; }
+.jw-md p { margin: 0 0 1.1em; }
+.jw-md ul, .jw-md ol { margin: 0 0 1.1em; padding-left: 1.3em; }
+.jw-md a { color: var(--gold-soft); text-underline-offset: 3px; }
+.jw-md a:hover { color: var(--gold-bright); }
+.jw-md blockquote { margin: 1.4em 0; padding-left: 1.2em; border-left: 2px solid var(--gold); color: var(--ivory); font-family: var(--font-display); font-size: 1.15em; }
+.jw-md hr { border: 0; border-top: 1px solid var(--line); margin: 2em 0; }
+
+/* -- product grid ---------------------------------------------------------------------------- */
+.jw-product-grid { padding: clamp(48px, 7vw, 110px) var(--gutter); }
+.jw-product-grid__title { font-family: var(--font-display); font-size: var(--fs-h2); font-weight: 600; letter-spacing: var(--track-display); margin: 0 0 clamp(24px, 3vw, 44px); }
+.jw-product-grid__grid { grid-template-columns: repeat(var(--jw-cols, 3), minmax(0, 1fr)); }
+@media (max-width: 900px) { .jw-product-grid__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .jw-product-grid__grid { grid-template-columns: minmax(0, 1fr); } }
+.product-card--plain { display: block; }
+.product-detail-grid--single { grid-template-columns: minmax(0, 1fr); }
+
+/* -- FAQ --------------------------------------------------------------------------------------- */
+.jw-faq { max-width: 860px; margin: 0 auto; padding: clamp(48px, 7vw, 110px) var(--gutter); }
+.jw-faq__title { font-family: var(--font-display); font-size: var(--fs-h2); font-weight: 600; letter-spacing: var(--track-display); margin: 0 0 24px; }
+.jw-faq__item { border-top: 1px solid var(--line); padding: 4px 0; }
+.jw-faq__item:last-child { border-bottom: 1px solid var(--line); }
+.jw-faq__item summary { cursor: pointer; list-style: none; padding: 18px 40px 18px 0; position: relative; font-weight: 600; color: var(--ivory); }
+.jw-faq__item summary::-webkit-details-marker { display: none; }
+.jw-faq__item summary::after { content: '+'; position: absolute; right: 6px; top: 50%; translate: 0 -50%; color: var(--gold); font-size: 1.3rem; transition: rotate var(--t-med) var(--ease-soft); }
+.jw-faq__item[open] summary::after { rotate: 45deg; }
+.jw-faq__item .jw-md { padding: 0 0 18px; }
+
+/* -- testimonials -------------------------------------------------------------------------------- */
+.jw-testimonials { padding: clamp(48px, 7vw, 110px) var(--gutter); display: grid; gap: clamp(16px, 2vw, 28px); grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); }
+.jw-testimonials--carousel { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 18px; padding-bottom: 28px; }
+.jw-testimonials--carousel .jw-testimonial { flex: 0 0 min(86vw, 380px); scroll-snap-align: start; }
+.jw-testimonial { margin: 0; padding: 26px; border: 1px solid var(--line); border-radius: var(--card-radius, var(--r-card)); background: var(--ink-2); display: flex; flex-direction: column; gap: 14px; }
+.jw-testimonial__stars { margin: 0; color: var(--gold-soft); letter-spacing: .12em; }
+.jw-testimonial__stars span { color: var(--line-strong); }
+.jw-testimonial blockquote { margin: 0; }
+.jw-testimonial blockquote p { margin: 0; font-family: var(--font-display); font-size: 1.15rem; line-height: 1.5; color: var(--ivory); }
+.jw-testimonial figcaption { display: flex; align-items: center; gap: 12px; margin-top: auto; }
+.jw-testimonial figcaption span { display: grid; }
+.jw-testimonial figcaption small { color: var(--mist); }
+.jw-testimonial__avatar { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; }
+.jw-testimonial__video { width: 100%; border-radius: var(--r-frame); aspect-ratio: 16 / 9; background: #000; }
+
+/* -- draft preview ribbon -------------------------------------------------------------------------------- */
+.preview-ribbon {
+  position: fixed; z-index: 700; left: 50%; bottom: 14px; translate: -50% 0;
+  max-width: calc(100vw - 24px);
+  padding: 7px 14px; border-radius: var(--r-pill);
+  background: #F3C45B; color: #170B04;
+  font: 700 .66rem/1.3 var(--font-body); letter-spacing: .12em; text-transform: uppercase;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .45); pointer-events: none;
+}
+
+/* -- reduced motion: never autoplay, never animate hover films ------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .jw-faq__item summary::after { transition: none; }
+}
